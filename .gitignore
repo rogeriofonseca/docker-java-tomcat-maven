@@ -1,0 +1,8 @@
+context.xml
+dir/
+disableDock
+docker-compose.yml
+target/
+Dockerfile
+tomcat-users.xml
+trash/
