@@ -1,0 +1,7 @@
+FROM maven:3.2-jdk-7
+
+COPY . /usr/src/mymaven
+WORKDIR /usr/src/mymaven
+
+ONBUILD RUN mvn install
+ONBUILD ["find . -name "*.war" -exec cp '{}' $CATALINA_HOME/webapps \;"]
