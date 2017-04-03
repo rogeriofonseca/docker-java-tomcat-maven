@@ -1,9 +1,0 @@
-FROM tomcat:8.0
-
-ADD . /code
-WORKDIR /code
-#COPY target/*.war $CATALINA_HOME/webapps/
-COPY tomcat-users.xml  $CATALINA_HOME/conf/
-VOLUME $CATALINA_HOME/webapps
-
-#EXPOSE 8888:8080

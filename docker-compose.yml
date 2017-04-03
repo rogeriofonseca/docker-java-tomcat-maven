@@ -9,20 +9,16 @@ services:
       - "3306:3306"
   maven:
       build:
-        context: .
+        context: dockerfiles
         dockerfile: Dockerfile-maven
       volumes:
         - ~/.m2:/root/.m2
         - .:/usr/src/mymaven
       volumes_from:
         - tomcat
-      entrypoint:
-        - ./entrypointscript.sh
   tomcat:
     build:
-      context: .
+      context: dockerfiles
       dockerfile: Dockerfile-apache
     ports:
       - "8888:8080"
-  #volume:
-    #$CATALINA_HOME/webapps/

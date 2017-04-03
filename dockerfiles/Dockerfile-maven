@@ -1,0 +1,31 @@
+#FROM maven:3.2-jdk-7
+FROM openjdk:7-jdk
+
+ARG MAVEN_VERSION=3.3.9
+ARG USER_HOME_DIR="/root"
+
+RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
+  && curl -fsSL http://apache.osuosl.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz \
+    | tar -xzC /usr/share/maven --strip-components=1 \
+  && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
+
+ENV MAVEN_HOME /usr/share/maven
+ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
+
+COPY entrypointscript.sh /usr/local/bin/mvn-entrypoint.sh
+COPY settings-docker.xml /usr/share/maven/ref/
+
+VOLUME "$USER_HOME_DIR/.m2"
+
+
+COPY . /usr/src/mymaven
+WORKDIR /usr/src/mymaven
+ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
+
+
+#COPY . /usr/src/mymaven
+#WORKDIR /usr/src/mymaven
+#
+#ADD ./entrypointscript.sh ./entrypointscript.sh
+#RUN chmod +x ./entrypointscript.sh
+#ONBUILD ["entrypointscript.sh"]

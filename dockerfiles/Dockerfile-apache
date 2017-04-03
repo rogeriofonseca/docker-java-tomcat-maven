@@ -1,0 +1,6 @@
+FROM tomcat:8.0
+
+ADD . /code
+WORKDIR /code
+COPY tomcat-users.xml  $CATALINA_HOME/conf/
+VOLUME $CATALINA_HOME/webapps
