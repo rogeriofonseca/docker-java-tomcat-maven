@@ -13,7 +13,7 @@ services:
         dockerfile: Dockerfile-maven
       volumes:
         - ~/.m2:/root/.m2
-        - .:/usr/src/mymaven
+        - $PWD:/usr/src/mymaven
       volumes_from:
         - tomcat
   tomcat:
