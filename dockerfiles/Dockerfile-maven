@@ -1,5 +1,8 @@
 FROM openjdk:7-jdk
 
+ENV http_proxy http://172.17.0.1:3128
+ENV https_proxy http://172.17.0.1:3128
+ENV MAVEN_HOME=/root/.m2/
 ARG MAVEN_VERSION=3.3.9
 ARG USER_HOME_DIR="/root"
 
@@ -12,5 +15,6 @@ ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
 VOLUME "$USER_HOME_DIR/.m2"
+COPY settings.xml $MAVEN_HOME/conf/
 WORKDIR /usr/src/mymaven
 ENTRYPOINT ["/usr/src/mymaven/scripts/entrypointscript.sh"]

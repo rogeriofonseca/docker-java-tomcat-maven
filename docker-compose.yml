@@ -16,6 +16,7 @@ services:
         - $PWD:/usr/src/mymaven
       volumes_from:
         - tomcat
+      network_mode: bridge
   tomcat:
     build:
       context: dockerfiles

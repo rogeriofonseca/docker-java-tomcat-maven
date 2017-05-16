@@ -22,7 +22,7 @@ public class JpaConfigurator {
     public DataSource getDataSource() throws PropertyVetoException {
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setDriverClass("com.mysql.jdbc.Driver");
-        dataSource.setJdbcUrl("jdbc:mysql://192.168.99.100/projeto_jpa");
+        dataSource.setJdbcUrl("jdbc:mysql://172.24.0.2/projeto_jpa");
         dataSource.setUser("root");
         dataSource.setPassword("root");
 
