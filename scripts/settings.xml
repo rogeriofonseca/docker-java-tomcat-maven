@@ -8,7 +8,6 @@
       <protocol>http</protocol> 
       <host>127.0.0.1</host> 
       <port>3128</port> 
-      <nonProxyHosts>localhost|10.161.*|127.0.0.1|proxy.cobra.com.br</nonProxyHosts> 
     </proxy> 
   </proxies> 
 </settings>
